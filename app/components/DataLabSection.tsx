@@ -93,17 +93,34 @@ ORDER BY variance ASC;`,
 export default function DataLabSection() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [executing, setExecuting] = useState(false);
-  const [showResults, setShowResults] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   const activeQuery = QUERIES[activeIdx];
 
   const handleExecute = () => {
     setExecuting(true);
-    setShowResults(false);
     setTimeout(() => {
       setExecuting(false);
-      setShowResults(true);
-    }, 650);
+    }, 600);
+  };
+
+  const downloadCSV = () => {
+    const headers = activeQuery.columns.join(",");
+    const rows = activeQuery.rows.map((r) => r.join(",")).join("\n");
+    const blob = new Blob([`${headers}\n${rows}`], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `${activeQuery.id}_results.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const copySQL = () => {
+    navigator.clipboard.writeText(activeQuery.sql);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -115,11 +132,11 @@ export default function DataLabSection() {
             Enterprise <span className="text-gradient">Data Studio</span>
           </h2>
           <p className="section-subtitle">
-            Experience real-world SQL analysis pipelines. Select analytical queries, execute the engine, and examine performance telemetry &amp; business insights.
+            Experience real-world SQL analysis pipelines. Select analytical queries, execute the engine, examine performance telemetry, and export query results to CSV.
           </p>
         </div>
 
-        {/* 100x Studio Frame */}
+        {/* Studio Window Frame */}
         <div
           style={{
             background: "#050B18",
@@ -147,10 +164,7 @@ export default function DataLabSection() {
               {QUERIES.map((q, idx) => (
                 <button
                   key={q.id}
-                  onClick={() => {
-                    setActiveIdx(idx);
-                    setShowResults(true);
-                  }}
+                  onClick={() => setActiveIdx(idx)}
                   style={{
                     padding: "0.4rem 0.85rem",
                     borderRadius: "8px",
@@ -169,12 +183,37 @@ export default function DataLabSection() {
               ))}
             </div>
 
-            {/* Run Button & Engine Indicator */}
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", fontSize: "0.72rem", color: "#64748B" }}>
-                <span className="status-beacon" />
-                <span>PostgreSQL 16 Engine</span>
-              </div>
+            {/* Run Button, Engine Indicator & Export */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <button
+                onClick={copySQL}
+                style={{
+                  padding: "0.4rem 0.75rem",
+                  borderRadius: "6px",
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#94A3B8",
+                  fontSize: "0.75rem",
+                  cursor: "pointer",
+                }}
+              >
+                {copied ? "✓ Copied" : "Copy SQL"}
+              </button>
+
+              <button
+                onClick={downloadCSV}
+                style={{
+                  padding: "0.4rem 0.75rem",
+                  borderRadius: "6px",
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#38BDF8",
+                  fontSize: "0.75rem",
+                  cursor: "pointer",
+                }}
+              >
+                Export CSV ↓
+              </button>
 
               <button
                 onClick={handleExecute}
@@ -182,7 +221,7 @@ export default function DataLabSection() {
                 className="linear-btn-primary"
                 style={{ padding: "0.45rem 1.15rem", fontSize: "0.8rem" }}
               >
-                {executing ? "Executing Query..." : "▶ Run Query"}
+                {executing ? "Running..." : "▶ Run Query"}
               </button>
             </div>
           </div>
@@ -206,7 +245,7 @@ export default function DataLabSection() {
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem", fontSize: "0.7rem", color: "#64748B", fontFamily: "monospace" }}>
-                <span>SQL QUERY EDITOR</span>
+                <span>SQL QUERY EDITOR &bull; PostgreSQL 16</span>
                 <span>UTF-8</span>
               </div>
               <pre
