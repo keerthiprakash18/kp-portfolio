@@ -11,12 +11,15 @@ import Footer from "./components/Footer";
 import AIAssistant from "./components/AIAssistant";
 import ScrollReveal from "./components/ScrollReveal";
 import RobotGreeting from "./components/RobotGreeting";
+import CommandPalette from "./components/CommandPalette";
 
 export default function Home() {
   return (
     <>
+      <div className="cyber-grid-overlay" />
       <ScrollReveal />
       <ParticleBackground />
+      <CommandPalette />
       <RobotGreeting />
       <Navigation />
       <main style={{ position: "relative", zIndex: 1 }}>

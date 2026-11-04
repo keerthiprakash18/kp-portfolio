@@ -1,126 +1,73 @@
 "use client";
 
-const SKILL_CATEGORIES = [
+const SKILL_PILLARS = [
   {
-    label: "Data & Analytics",
-    color: "var(--accent-blue-bright)",
+    category: "Data Ingestion & Storage",
+    icon: "🗄️",
+    accent: "#3B82F6",
+    summary: "Relational database structuring, ETL flows, and data hygiene.",
+    skills: [
+      { name: "SQL (PostgreSQL / MySQL)", desc: "Complex joins, indexing, window functions", tier: "Advanced" },
+      { name: "Relational DB Architecture", desc: "Normalization, foreign keys, schema design", tier: "Advanced" },
+      { name: "Prisma & Supabase", desc: "Database migrations & connection pooling", tier: "Proficient" },
+    ],
+  },
+  {
+    category: "Analytics & Transformation",
     icon: "📊",
+    accent: "#06B6D4",
+    summary: "Statistical aggregation, anomaly detection, and KPI metrics.",
     skills: [
-      { name: "SQL (MySQL / PostgreSQL)", level: 90 },
-      { name: "Python (Pandas, NumPy)", level: 82 },
-      { name: "Power BI", level: 85 },
-      { name: "Microsoft Excel (Advanced)", level: 88 },
-      { name: "Data Visualization", level: 83 },
-      { name: "Statistical Analysis", level: 78 },
+      { name: "Python (Pandas & NumPy)", desc: "Exploratory data analysis & data cleaning", tier: "Advanced" },
+      { name: "Advanced Excel & Power Query", desc: "XLOOKUP, solver, automated macros", tier: "Expert" },
+      { name: "AccioJob Analytics Intensive", desc: "6-month rigorous business track", tier: "Ongoing" },
     ],
   },
   {
-    label: "Business Intelligence",
-    color: "#a78bfa",
-    icon: "💼",
+    category: "Business Intelligence & Reporting",
+    icon: "📈",
+    accent: "#8B5CF6",
+    summary: "Executive dashboards, automated summaries, and stakeholder reporting.",
     skills: [
-      { name: "Business Analysis", level: 85 },
-      { name: "KPI Definition & Reporting", level: 82 },
-      { name: "Dashboard Design", level: 80 },
-      { name: "Data Storytelling", level: 78 },
-      { name: "Process Analytics", level: 75 },
+      { name: "Power BI Dashboards", desc: "DAX measures, interactive drill-downs", tier: "Advanced" },
+      { name: "PwC Business Analytics Program", desc: "Corporate governance & KPI evaluation", tier: "Ongoing" },
+      { name: "Automated AI Reporting", desc: "IJFMR published reporting pipeline", tier: "Validated" },
     ],
   },
   {
-    label: "Development",
-    color: "#22d3ee",
-    icon: "⚙️",
+    category: "Production Software & Delivery",
+    icon: "🚀",
+    accent: "#10B981",
+    summary: "Full-stack integration, APIs, and cloud hosting.",
     skills: [
-      { name: "Django REST Framework", level: 78 },
-      { name: "React / TypeScript", level: 75 },
-      { name: "Next.js", level: 70 },
-      { name: "PostgreSQL Design", level: 82 },
-      { name: "REST API Design", level: 78 },
-      { name: "Git & GitHub", level: 80 },
-    ],
-  },
-  {
-    label: "AI & ML Tools",
-    color: "#4ade80",
-    icon: "🤖",
-    skills: [
-      { name: "NLP (Basic)", level: 65 },
-      { name: "AI-Assisted Development", level: 85 },
-      { name: "Prompt Engineering", level: 80 },
-      { name: "OCR / Document AI", level: 72 },
+      { name: "React / Next.js / NestJS", desc: "Full-stack product interfaces", tier: "Advanced" },
+      { name: "Django REST Framework", desc: "Secure REST APIs with JWT & OCR", tier: "Proficient" },
+      { name: "Docker & Cloud Platforms", desc: "Vercel, Railway & Linux VPS deployment", tier: "Proficient" },
     ],
   },
 ];
 
-const TOOLS = [
-  "Power BI", "MySQL Workbench", "pgAdmin", "VS Code", "PyCharm",
-  "Jupyter Notebook", "Google Colab", "Git", "GitHub", "Supabase",
-  "Railway", "Vercel", "Android Studio", "Figma",
+const PLATFORMS = [
+  "Power BI Desktop", "PostgreSQL", "MySQL Workbench", "Python 3.12",
+  "Pandas", "NumPy", "Jupyter Labs", "VS Code", "Prisma ORM",
+  "Redis", "Docker", "Git & GitHub", "Vercel", "Railway", "Capacitor",
 ];
-
-function SkillBar({ name, level, color }: { name: string; level: number; color: string }) {
-  return (
-    <div style={{ marginBottom: "1rem" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginBottom: "0.4rem",
-        }}
-      >
-        <span style={{ fontSize: "0.875rem", color: "var(--fg-secondary)", fontWeight: 500 }}>
-          {name}
-        </span>
-        <span style={{ fontSize: "0.75rem", color: "var(--fg-muted)" }}>
-          {level}%
-        </span>
-      </div>
-      <div
-        style={{
-          height: "5px",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: "999px",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            height: "100%",
-            width: `${level}%`,
-            background: `linear-gradient(90deg, ${color}, ${color}aa)`,
-            borderRadius: "999px",
-            transition: "width 1s ease",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
 
 export default function SkillsSection() {
   return (
     <section id="skills" className="section">
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(180deg, transparent, rgba(14,20,38,0.5) 50%, transparent)",
-          pointerEvents: "none",
-        }}
-        aria-hidden="true"
-      />
-      <div className="container" style={{ position: "relative" }}>
+      <div className="container">
         <div style={{ marginBottom: "3.5rem" }}>
-          <div className="section-label">Technical Stack</div>
-          <h2 className="section-title">Skills & Expertise</h2>
+          <div className="section-label">Capability Matrix</div>
+          <h2 className="section-title">
+            Technical Expertise &amp; <span className="text-gradient">Data Lifecycle</span>
+          </h2>
           <p className="section-subtitle">
-            SQL and Python are my primary analytics tools. I pair data proficiency
-            with full-stack development skills to build end-to-end analytical products.
+            Organized across the end-to-end data lifecycle: from raw database ingestion and Python transformation, to BI executive dashboards and production web applications.
           </p>
         </div>
 
-        {/* Category grid */}
+        {/* 4-Pillar Grid */}
         <div
           style={{
             display: "grid",
@@ -129,63 +76,96 @@ export default function SkillsSection() {
             marginBottom: "3rem",
           }}
         >
-          {SKILL_CATEGORIES.map((cat) => (
+          {SKILL_PILLARS.map((pillar) => (
             <div
-              key={cat.label}
-              className="glass-card"
-              style={{ padding: "1.75rem" }}
+              key={pillar.category}
+              className="glass-panel"
+              style={{
+                padding: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.6rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <span style={{ fontSize: "1.25rem" }}>{cat.icon}</span>
-                <h3
-                  style={{
-                    fontSize: "0.875rem",
-                    fontWeight: 700,
-                    color: cat.color,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  {cat.label}
-                </h3>
-              </div>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.85rem" }}>
+                  <span style={{ fontSize: "1.5rem" }}>{pillar.icon}</span>
+                  <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF" }}>
+                    {pillar.category}
+                  </h3>
+                </div>
 
-              {cat.skills.map((skill) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  level={skill.level}
-                  color={cat.color}
-                />
-              ))}
+                <p style={{ fontSize: "0.825rem", color: "#94A3B8", marginBottom: "1.5rem", lineHeight: 1.5 }}>
+                  {pillar.summary}
+                </p>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                  {pillar.skills.map((s) => (
+                    <div
+                      key={s.name}
+                      style={{
+                        padding: "0.65rem 0.85rem",
+                        borderRadius: "8px",
+                        background: "rgba(255, 255, 255, 0.02)",
+                        border: "1px solid rgba(255, 255, 255, 0.05)",
+                      }}
+                    >
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.2rem" }}>
+                        <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "#F1F5F9" }}>
+                          {s.name}
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "0.65rem",
+                            padding: "0.15rem 0.45rem",
+                            borderRadius: "4px",
+                            background: `${pillar.accent}15`,
+                            color: pillar.accent,
+                            fontWeight: 700,
+                            letterSpacing: "0.02em",
+                          }}
+                        >
+                          {s.tier}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: "0.75rem", color: "#64748B" }}>
+                        {s.desc}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Tools section */}
-        <div className="glass-card" style={{ padding: "2rem" }}>
-          <h3
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: "var(--accent-blue-bright)",
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              marginBottom: "1.25rem",
-            }}
-          >
-            Tools & Platforms
-          </h3>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-            {TOOLS.map((tool) => (
-              <span key={tool} className="skill-pill">
+        {/* Tool Ecosystem Strip */}
+        <div
+          className="glass-panel"
+          style={{
+            padding: "1.5rem 2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.85rem",
+          }}
+        >
+          <div style={{ fontSize: "0.725rem", fontWeight: 700, color: "#38BDF8", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            Validated Platform &amp; Tool Ecosystem
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.55rem" }}>
+            {PLATFORMS.map((tool) => (
+              <span
+                key={tool}
+                style={{
+                  padding: "0.35rem 0.85rem",
+                  borderRadius: "999px",
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  fontSize: "0.8rem",
+                  color: "#CBD5E1",
+                  fontFamily: "var(--font-mono), monospace",
+                }}
+              >
                 {tool}
               </span>
             ))}

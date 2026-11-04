@@ -10,328 +10,302 @@ export default function HeroSection() {
         display: "flex",
         alignItems: "center",
         position: "relative",
-        paddingTop: "96px",
+        paddingTop: "110px",
+        paddingBottom: "60px",
         overflow: "hidden",
       }}
     >
-      {/* Ambient glows */}
+      {/* Dynamic Ambient Spotlights */}
       <div
-        className="ambient-glow ambient-glow-blue"
-        style={{ top: "-100px", left: "-200px", opacity: 0.25 }}
-        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: "-15%",
+          left: "20%",
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
       />
       <div
-        className="ambient-glow ambient-glow-cyan"
-        style={{ top: "200px", right: "-100px", opacity: 0.15 }}
-        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: "30%",
+          right: "5%",
+          width: "500px",
+          height: "500px",
+          background: "radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%)",
+          filter: "blur(90px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
       />
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr auto",
+            gridTemplateColumns: "1.15fr 0.85fr",
             gap: "4rem",
             alignItems: "center",
           }}
           className="hero-grid"
         >
-          {/* Text Content */}
+          {/* Left Column: Value Proposition & Identity */}
           <div>
-            {/* Availability indicator */}
+            {/* Live Status Pill with Ping */}
             <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "0.6rem",
-                padding: "0.4rem 1rem",
-                borderRadius: "999px",
-                background: "rgba(74, 222, 128, 0.08)",
-                border: "1px solid rgba(74, 222, 128, 0.2)",
-                marginBottom: "2rem",
-                fontSize: "0.8125rem",
-                fontWeight: 500,
-                color: "#4ade80",
+                gap: "0.65rem",
+                padding: "0.4rem 0.95rem",
+                borderRadius: "var(--radius-full)",
+                background: "rgba(16, 185, 129, 0.08)",
+                border: "1px solid rgba(16, 185, 129, 0.25)",
+                marginBottom: "1.75rem",
+                boxShadow: "0 0 20px rgba(16, 185, 129, 0.1)",
               }}
             >
-              <span className="availability-dot" />
-              Available for roles — Open to opportunities
+              <span className="status-beacon" />
+              <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#34D399", letterSpacing: "0.01em" }}>
+                Ready to Join · Available for Immediate Placement
+              </span>
             </div>
 
-            {/* Name */}
+            {/* Principal Name Typography */}
             <h1
               style={{
-                fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)",
-                fontWeight: 800,
-                letterSpacing: "-0.03em",
+                fontSize: "clamp(2.75rem, 5.5vw, 4.75rem)",
+                fontWeight: 900,
+                letterSpacing: "-0.04em",
                 lineHeight: 1.05,
-                marginBottom: "0.75rem",
+                color: "#FFFFFF",
+                marginBottom: "0.85rem",
               }}
             >
-              <span className="gradient-text-warm">Keerthi</span>
-              <br />
-              <span style={{ color: "var(--fg-primary)" }}>Prakash T</span>
+              KEERTHI <span className="text-gradient">PRAKASH T</span>
             </h1>
 
-            {/* Role */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "0.5rem",
-                marginBottom: "1.75rem",
-              }}
-            >
+            {/* High-Velocity Role Badges */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.55rem", marginBottom: "1.75rem" }}>
               {[
-                "Data Analyst",
-                "Business Analytics",
-                "AI-Assisted Developer",
-              ].map((role, i) => (
-                <span key={role} className="badge badge-blue" style={{ fontSize: "0.8125rem" }}>
-                  {i > 0 && <span style={{ color: "var(--fg-muted)", marginRight: "0.25rem" }}>·</span>}
-                  {role}
+                { title: "Data Analyst", color: "#60A5FA" },
+                { title: "Business Intelligence", color: "#38BDF8" },
+                { title: "AI-Assisted Developer", color: "#818CF8" },
+              ].map((badge) => (
+                <span
+                  key={badge.title}
+                  style={{
+                    padding: "0.3rem 0.75rem",
+                    borderRadius: "6px",
+                    background: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    color: badge.color,
+                    fontSize: "0.8rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.01em",
+                  }}
+                >
+                  {badge.title}
                 </span>
               ))}
             </div>
 
-            {/* Headline */}
-            <p
+            {/* Headline with Linear Style Contrast */}
+            <h2
               style={{
-                fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
-                fontWeight: 600,
-                color: "var(--fg-primary)",
-                marginBottom: "1rem",
-                lineHeight: 1.4,
-                letterSpacing: "-0.01em",
+                fontSize: "clamp(1.2rem, 2.2vw, 1.55rem)",
+                fontWeight: 700,
+                color: "#F8FAFC",
+                lineHeight: 1.35,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
               }}
             >
-              Turning Data into Decisions.
-              <br />
-              <span className="gradient-text">Building Ideas into Real Products.</span>
-            </p>
+              Turning raw data into strategic intelligence. <br />
+              <span className="text-gradient-silver">Building complex ideas into production-ready software.</span>
+            </h2>
 
-            {/* Bio */}
+            {/* Impact Narrative */}
             <p
               style={{
-                fontSize: "1rem",
-                color: "var(--fg-secondary)",
+                fontSize: "1.025rem",
+                color: "#94A3B8",
                 lineHeight: 1.75,
-                maxWidth: "540px",
-                marginBottom: "2.5rem",
+                maxWidth: "560px",
+                marginBottom: "2.25rem",
               }}
             >
-              B.Tech in Artificial Intelligence &amp; Data Science (CARE College of Engineering, 2022–2026, CGPA 7.29) with hands-on expertise in SQL, Python, Power BI, Advanced Excel, and business analytics. Builder of live platforms like <strong>FC Arena</strong> and <strong>Smart Expense Tracker</strong>, with published research in automated AI reporting.
+              Graduating with a <b>B.Tech in Artificial Intelligence & Data Science</b> (CARE College of Engineering, CGPA 7.29). Specializing in <b>SQL, PostgreSQL, Python analytics, Advanced Excel, and Power BI dashboards</b>. Experienced in architecting live production systems like <b>FC Arena</b> and authoring published research on automated AI reporting with <b>70%+ turnaround acceleration</b>.
             </p>
 
-            {/* Achievement chips */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "0.75rem",
-                marginBottom: "2.5rem",
-              }}
-            >
-              {[
-                { icon: "📊", label: "SQL, Python & Power BI" },
-                { icon: "🏆", label: "FC Arena — Live Platform" },
-                { icon: "📄", label: "Published Author (IJFMR)" },
-                { icon: "📈", label: "AccioJob & PwC Analytics" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.4rem",
-                    padding: "0.35rem 0.85rem",
-                    background: "var(--bg-glass-light)",
-                    border: "1px solid var(--border-subtle)",
-                    borderRadius: "999px",
-                    fontSize: "0.8rem",
-                    color: "var(--fg-secondary)",
-                  }}
-                >
-                  <span>{item.icon}</span>
-                  <span>{item.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "0.75rem",
-                marginBottom: "2.5rem",
-              }}
-            >
-              <a href="#projects" className="btn btn-primary btn-lg">
-                View Projects →
+            {/* Key Action Buttons */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem", marginBottom: "2.25rem" }}>
+              <a href="#datalab" className="linear-btn-primary">
+                <span>⚡ Open SQL Data Lab</span>
               </a>
-              <a href="#contact" className="btn btn-secondary btn-lg">
-                Get in Touch
+              <a href="#projects" className="linear-btn-secondary">
+                <span>Explore Live Projects →</span>
               </a>
               <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary btn-lg"
+                className="linear-btn-secondary"
+                style={{ borderColor: "rgba(59, 130, 246, 0.35)", color: "#60A5FA" }}
               >
-                ↓ Download Resume
+                <span>↓ Download Resume (10.5pt PDF)</span>
               </a>
             </div>
 
-            {/* Social links */}
-            <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-              <a
-                href="https://github.com/keerthiprakash18"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontSize: "0.875rem",
-                  padding: "0.4rem 0.75rem",
-                }}
-              >
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                </svg>
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/keerthiprakasht"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontSize: "0.875rem",
-                  padding: "0.4rem 0.75rem",
-                }}
-              >
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                LinkedIn
-              </a>
+            {/* Interactive Shortcut Hint */}
+            <div
+              onClick={() => {
+                const event = new KeyboardEvent("keydown", { key: "k", ctrlKey: true });
+                window.dispatchEvent(event);
+              }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.4rem 0.85rem",
+                borderRadius: "8px",
+                background: "rgba(255, 255, 255, 0.03)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                fontSize: "0.775rem",
+                color: "#64748B",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(59, 130, 246, 0.4)";
+                e.currentTarget.style.color = "#94A3B8";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.08)";
+                e.currentTarget.style.color = "#64748B";
+              }}
+            >
+              <span>Quick Navigation:</span>
+              <kbd style={{ padding: "0.15rem 0.45rem", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "#E2E8F0", fontFamily: "monospace" }}>Ctrl</kbd>
+              <span>+</span>
+              <kbd style={{ padding: "0.15rem 0.45rem", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "#E2E8F0", fontFamily: "monospace" }}>K</kbd>
             </div>
           </div>
 
-          {/* Profile Image Area */}
-          <div
-            className="hero-image-col"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "1.5rem",
-            }}
-          >
-            {/* Avatar container */}
+          {/* Right Column: Holographic Portrait Display */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }} className="hero-portrait-wrapper">
             <div
               style={{
                 position: "relative",
-                width: "280px",
-                height: "280px",
+                width: "320px",
+                height: "380px",
+                borderRadius: "24px",
+                padding: "8px",
+                background: "linear-gradient(145deg, rgba(59, 130, 246, 0.4) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(6, 182, 212, 0.3) 100%)",
+                boxShadow: "0 20px 60px -10px rgba(0, 0, 0, 0.8), 0 0 50px rgba(59, 130, 246, 0.25)",
               }}
             >
-              {/* Rotating ring */}
+              {/* Inner Picture Container */}
               <div
                 style={{
-                  position: "absolute",
-                  inset: "-12px",
-                  borderRadius: "50%",
-                  background:
-                    "conic-gradient(from 0deg, transparent 60%, rgba(59,130,246,0.6) 80%, transparent 100%)",
-                  animation: "spin 8s linear infinite",
-                }}
-                aria-hidden="true"
-              />
-              {/* Static ring */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: "-6px",
-                  borderRadius: "50%",
-                  border: "1px solid rgba(59,130,246,0.2)",
-                }}
-                aria-hidden="true"
-              />
-
-              {/* Real Profile Image */}
-              <div
-                style={{
+                  position: "relative",
                   width: "100%",
                   height: "100%",
-                  borderRadius: "50%",
-                  border: "3px solid rgba(59,130,246,0.4)",
-                  boxShadow:
-                    "0 20px 60px rgba(0,0,0,0.6), 0 0 60px rgba(59,130,246,0.3)",
+                  borderRadius: "18px",
                   overflow: "hidden",
-                  position: "relative",
-                  zIndex: 1,
-                  background: "#090d18",
+                  background: "#080F20",
                 }}
               >
                 <Image
                   src="/profile.jpg"
-                  alt="Keerthi Prakash T"
+                  alt="Keerthi Prakash T — Data Analyst & Developer"
                   fill
-                  style={{ objectFit: "cover", objectPosition: "center 20%" }}
+                  style={{ objectFit: "cover", objectPosition: "center 15%" }}
                   priority
                 />
+
+                {/* Subtle Bottom Vignette */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(to top, rgba(3, 7, 18, 0.85) 0%, transparent 40%)",
+                    pointerEvents: "none",
+                  }}
+                />
+
+                {/* Live Badge Overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "16px",
+                    left: "16px",
+                    right: "16px",
+                    padding: "0.6rem 0.85rem",
+                    borderRadius: "12px",
+                    background: "rgba(10, 18, 38, 0.85)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div>
+                    <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#FFFFFF" }}>
+                      Keerthi Prakash T
+                    </div>
+                    <div style={{ fontSize: "0.7rem", color: "#38BDF8" }}>
+                      CARE College of Engg &bull; CGPA 7.29
+                    </div>
+                  </div>
+                  <span
+                    style={{
+                      fontSize: "0.68rem",
+                      padding: "0.2rem 0.5rem",
+                      borderRadius: "6px",
+                      background: "rgba(16, 185, 129, 0.15)",
+                      color: "#34D399",
+                      fontWeight: 600,
+                      border: "1px solid rgba(16, 185, 129, 0.3)",
+                    }}
+                  >
+                    Verified
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Stats */}
+            {/* Quick Metrics Banner Below Portrait */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "0.75rem",
                 width: "100%",
+                maxWidth: "340px",
+                marginTop: "1.25rem",
               }}
             >
               {[
-                { value: "7.29", label: "CGPA (B.Tech AI & DS)" },
-                { value: "2026", label: "CARE College of Engg" },
-                { value: "70%+", label: "Reporting Time Reduced" },
-                { value: "1 Paper", label: "IJFMR Published" },
-              ].map((stat) => (
+                { val: "70%+", label: "Reporting Speed" },
+                { val: "20+", label: "Active Esports Users" },
+                { val: "1 Paper", label: "IJFMR Published" },
+              ].map((m) => (
                 <div
-                  key={stat.label}
-                  className="glass-card"
-                  style={{
-                    padding: "0.875rem",
-                    textAlign: "center",
-                    borderRadius: "12px",
-                  }}
+                  key={m.label}
+                  className="glass-panel"
+                  style={{ padding: "0.75rem 0.5rem", textAlign: "center", borderRadius: "12px" }}
                 >
-                  <div
-                    style={{
-                      fontSize: "1.25rem",
-                      fontWeight: 800,
-                      color: "var(--accent-blue-bright)",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    {stat.value}
+                  <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#60A5FA", letterSpacing: "-0.02em" }}>
+                    {m.val}
                   </div>
-                  <div
-                    style={{
-                      fontSize: "0.7rem",
-                      color: "var(--fg-muted)",
-                      marginTop: "0.2rem",
-                    }}
-                  >
-                    {stat.label}
+                  <div style={{ fontSize: "0.65rem", color: "#94A3B8", marginTop: "0.15rem" }}>
+                    {m.label}
                   </div>
                 </div>
               ))}
@@ -341,22 +315,13 @@ export default function HeroSection() {
       </div>
 
       <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
+            gap: 3rem !important;
           }
-          .hero-image-col {
+          .hero-portrait-wrapper {
             order: -1;
-          }
-        }
-        @media (max-width: 600px) {
-          .hero-image-col > div:first-child {
-            width: 200px !important;
-            height: 200px !important;
           }
         }
       `}</style>
