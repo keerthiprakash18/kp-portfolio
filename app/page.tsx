@@ -10,12 +10,14 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import AIAssistant from "./components/AIAssistant";
 import ScrollReveal from "./components/ScrollReveal";
+import RobotGreeting from "./components/RobotGreeting";
 
 export default function Home() {
   return (
     <>
       <ScrollReveal />
       <ParticleBackground />
+      <RobotGreeting />
       <Navigation />
       <main style={{ position: "relative", zIndex: 1 }}>
         <HeroSection />

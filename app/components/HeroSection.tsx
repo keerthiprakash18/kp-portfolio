@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -264,37 +265,28 @@ export default function HeroSection() {
                 aria-hidden="true"
               />
 
-              {/* Avatar */}
+              {/* Real Profile Image */}
               <div
                 style={{
                   width: "100%",
                   height: "100%",
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #1e3a5f, #0d1a3a)",
-                  border: "3px solid rgba(59,130,246,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  border: "3px solid rgba(59,130,246,0.4)",
                   boxShadow:
-                    "0 20px 60px rgba(0,0,0,0.6), 0 0 60px rgba(59,130,246,0.2)",
+                    "0 20px 60px rgba(0,0,0,0.6), 0 0 60px rgba(59,130,246,0.3)",
                   overflow: "hidden",
                   position: "relative",
                   zIndex: 1,
+                  background: "#090d18",
                 }}
               >
-                <span
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "3rem",
-                    letterSpacing: "-0.02em",
-                    background: "linear-gradient(135deg, #3b82f6, #22d3ee)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  KP
-                </span>
+                <Image
+                  src="/profile.jpg"
+                  alt="Keerthi Prakash T"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center 20%" }}
+                  priority
+                />
               </div>
             </div>
 
@@ -347,24 +339,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "2rem",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "0.5rem",
-          color: "var(--fg-muted)",
-          fontSize: "0.75rem",
-          animation: "float 2s ease-in-out infinite",
-        }}
-        aria-hidden="true"
-      />
 
       <style>{`
         @keyframes spin {
