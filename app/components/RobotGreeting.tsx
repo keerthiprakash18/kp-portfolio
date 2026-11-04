@@ -5,10 +5,10 @@ export default function RobotGreeting() {
   const [visible, setVisible] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [text, setText] = useState("");
-  const fullText = "வணக்கம்! Welcome to Keerthi Prakash's Portfolio. Feel free to explore my Data Lab, Projects, and interactive AI assistant!";
+  const fullText = "Hello! Welcome to Keerthi Prakash's Portfolio. Feel free to explore my interactive SQL Data Lab, live full-stack projects, and verified research.";
 
   useEffect(() => {
-    // Show banner after 1.5 seconds of initial load
+    // Show banner after 1.2 seconds of initial load
     const timer = setTimeout(() => {
       setVisible(true);
       setSpeaking(true);
@@ -29,20 +29,22 @@ export default function RobotGreeting() {
         clearInterval(interval);
         setSpeaking(false);
       }
-    }, 28);
+    }, 24);
 
     return () => clearInterval(interval);
   }, [visible]);
 
-  // Voice speech synthesis trigger
+  // Voice speech synthesis trigger in standard English
   const playVoice = () => {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance("Welcome to Keerthi Prakash's Portfolio. Exploring data analytics, AI projects, and real world products!");
-      utterance.rate = 1.0;
-      utterance.pitch = 1.1;
+      const utterance = new SpeechSynthesisUtterance("Hello! Welcome to Keerthi Prakash's Portfolio. Feel free to explore my interactive SQL Data Lab, live full-stack projects, and verified research.");
+      utterance.lang = "en-US";
+      utterance.rate = 0.95;
+      utterance.pitch = 1.05;
       setSpeaking(true);
       utterance.onend = () => setSpeaking(false);
+      utterance.onerror = () => setSpeaking(false);
       window.speechSynthesis.speak(utterance);
     }
   };
@@ -71,7 +73,7 @@ export default function RobotGreeting() {
         {/* Animated Robot Avatar */}
         <div
           onClick={playVoice}
-          title="Click to hear voice!"
+          title="Click to hear audio introduction"
           style={{
             position: "relative",
             width: "44px",
@@ -90,7 +92,6 @@ export default function RobotGreeting() {
           }}
         >
           🤖
-          {/* Audio sound waves ping */}
           {speaking && (
             <span
               style={{
@@ -108,10 +109,13 @@ export default function RobotGreeting() {
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
             <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-blue-bright)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Portfolio Guide AI
+              Portfolio AI Guide
             </span>
             <button
-              onClick={() => setVisible(false)}
+              onClick={() => {
+                if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+                setVisible(false);
+              }}
               aria-label="Close greeting"
               style={{
                 background: "transparent",
@@ -158,7 +162,10 @@ export default function RobotGreeting() {
             </button>
             <a
               href="#datalab"
-              onClick={() => setVisible(false)}
+              onClick={() => {
+                if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+                setVisible(false);
+              }}
               style={{
                 padding: "0.2rem 0.55rem",
                 borderRadius: "6px",
@@ -169,7 +176,7 @@ export default function RobotGreeting() {
                 textDecoration: "none",
               }}
             >
-              Try Data Lab →
+              Explore Data Lab →
             </a>
           </div>
         </div>
