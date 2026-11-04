@@ -13,12 +13,11 @@ export default function ContactSection() {
     e.preventDefault();
     setStatus("sending");
     
-    // Mailto fallback — open default email client with form data pre-filled
     const subject = encodeURIComponent(form.subject || "Portfolio Inquiry");
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
     );
-    window.location.href = `mailto:keerthiprakasht@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:keerthiprakash.kp33@gmail.com?subject=${subject}&body=${body}`;
     
     setTimeout(() => {
       setStatus("sent");
@@ -43,8 +42,8 @@ export default function ContactSection() {
           <div className="section-label" style={{ justifyContent: "center" }}>Get In Touch</div>
           <h2 className="section-title">Let&rsquo;s Work Together</h2>
           <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            Open to data analyst, business analyst, and BI analyst roles.
-            Also available for freelance analytics work and collaborations.
+            Open to Data Analyst, Business Analyst, and BI Analyst roles.
+            Ready to contribute analytical thinking and product engineering skills.
           </p>
         </div>
 
@@ -63,8 +62,14 @@ export default function ContactSection() {
               {
                 icon: "✉️",
                 label: "Email",
-                value: "keerthiprakasht@gmail.com",
-                href: "mailto:keerthiprakasht@gmail.com",
+                value: "keerthiprakash.kp33@gmail.com",
+                href: "mailto:keerthiprakash.kp33@gmail.com",
+              },
+              {
+                icon: "📱",
+                label: "Phone",
+                value: "+91 63819 81530",
+                href: "tel:+916381981530",
               },
               {
                 icon: "🔗",
@@ -75,20 +80,20 @@ export default function ContactSection() {
               {
                 icon: "⌨️",
                 label: "GitHub",
-                value: "github.com/keerthiprakash",
-                href: "https://github.com/keerthiprakash",
+                value: "github.com/keerthiprakash18",
+                href: "https://github.com/keerthiprakash18",
               },
               {
                 icon: "📍",
                 label: "Location",
-                value: "India",
+                value: "Tamil Nadu, India",
                 href: null,
               },
             ].map((item) => (
               <div
                 key={item.label}
                 className="glass-card"
-                style={{ padding: "1.25rem", marginBottom: "0.75rem" }}
+                style={{ padding: "1.1rem", marginBottom: "0.75rem" }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                   <span style={{ fontSize: "1.25rem" }}>{item.icon}</span>
@@ -107,10 +112,10 @@ export default function ContactSection() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        target={item.href.startsWith("mailto") ? undefined : "_blank"}
+                        target={item.href.startsWith("mailto") || item.href.startsWith("tel") ? undefined : "_blank"}
                         rel="noopener noreferrer"
                         style={{
-                          fontSize: "0.875rem",
+                          fontSize: "0.85rem",
                           color: "var(--accent-blue-bright)",
                           fontWeight: 500,
                           transition: "color 0.2s",
@@ -119,7 +124,7 @@ export default function ContactSection() {
                         {item.value}
                       </a>
                     ) : (
-                      <span style={{ fontSize: "0.875rem", color: "var(--fg-secondary)" }}>
+                      <span style={{ fontSize: "0.85rem", color: "var(--fg-secondary)" }}>
                         {item.value}
                       </span>
                     )}
@@ -140,7 +145,7 @@ export default function ContactSection() {
                 marginTop: "0.5rem",
               }}
             >
-              ↓ Download Resume
+              ↓ Download Official Resume (PDF)
             </a>
           </div>
 
@@ -263,8 +268,8 @@ export default function ContactSection() {
                     <option value="Job Opportunity — Data Analyst">Job Opportunity — Data Analyst</option>
                     <option value="Job Opportunity — Business Analyst">Job Opportunity — Business Analyst</option>
                     <option value="Job Opportunity — BI Analyst">Job Opportunity — BI Analyst</option>
-                    <option value="Freelance Analytics Work">Freelance Analytics Work</option>
-                    <option value="Collaboration">Collaboration</option>
+                    <option value="Internship Opportunity">Internship Opportunity</option>
+                    <option value="Freelance Analytics Project">Freelance Analytics Project</option>
                     <option value="General Inquiry">General Inquiry</option>
                   </select>
                 </div>
@@ -283,7 +288,7 @@ export default function ContactSection() {
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Tell me about the role or project..."
+                    placeholder="Tell me about the role, team or project..."
                     style={{
                       width: "100%",
                       padding: "0.625rem 0.875rem",

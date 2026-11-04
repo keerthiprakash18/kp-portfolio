@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 const QUICK_QUESTIONS = [
+  "What is your educational background?",
   "What roles are you targeting?",
   "Tell me about FC Arena",
   "What are your top technical skills?",
@@ -11,37 +12,40 @@ const QUICK_QUESTIONS = [
 ];
 
 const KNOWLEDGE_BASE: Record<string, string> = {
-  "roles": `I am actively targeting roles as a **Data Analyst**, **Business Analyst**, and **BI Analyst**. I am also open to **Data Engineer** and **Product Analyst** positions where my combination of analytics and product development experience adds value. I bring SQL, Python, Power BI, and business intelligence skills alongside real product-building experience.`,
-  "fc arena": `**FC Arena** (fcarena.in) is a live football esports tournament platform I built and own. It handles:\n\n• Tournament and league creation and management\n• Automated fixture scheduling and bracket generation\n• Match results and live score tracking\n• Player rankings, leaderboards, and statistics\n• Admin dashboard for tournament organizers\n\nIt is a real, deployed product used by actual players. Stack: React, Django REST, PostgreSQL, Railway, Vercel.`,
-  "skills": `My primary technical skills:\n\n**Data & Analytics:** SQL (MySQL/PostgreSQL), Python (Pandas, NumPy), Power BI, Excel\n**Business Intelligence:** Dashboard design, KPI reporting, data storytelling\n**Development:** Django REST, React, TypeScript, Next.js, PostgreSQL\n**AI Tools:** Prompt engineering, AI-assisted development, OCR integration\n\nSQL and Python are my core tools for data work.`,
-  "research": `I authored a research study on **Automation of Daily Report Generation Using AI and NLP**. The research investigates how Python-based pipelines can automate business report generation using NLP, reducing manual analyst effort while producing KPI-driven insights automatically.`,
-  "expense tracker": `The **Smart Expense Tracker** (V3) is a production-grade personal finance application:\n\n• OCR receipt extraction from camera photos, images, and PDFs\n• Monthly dashboard with category analytics and cash-flow charts\n• AI-powered finance assistant (English, Tamil, Tanglish)\n• Credit card tracking and budget monitoring\n• Installable PWA + Android app via Capacitor\n• Django REST backend, React/Vite frontend, Supabase auth\n\nThis is a real, fully-featured application with 2FA, backup/restore, and email verification.`,
-  "available": `Yes — I am **currently available for opportunities** as of late 2026. I am open to full-time roles, contract work, and collaborative projects. Feel free to reach me via the Contact section or through LinkedIn.`,
-  "contact": `You can reach me through:\n\n• **Email:** Use the contact form on this page\n• **LinkedIn:** linkedin.com/in/keerthiprakasht\n• **GitHub:** github.com/keerthiprakash\n\nI typically respond within 24–48 hours.`,
-  "about": `I am **Keerthi Prakash T**, an MBA graduate specializing in Business Analytics. I combine data analytics expertise with product development skills — I build and ship real products rather than just studying concepts.\n\nMy background spans SQL analytics, Python data processing, Power BI reporting, and full-stack development. I use AI tools strategically to deliver higher quality work faster.`,
+  "education": `My educational background & professional training:\n\n• **B.Tech — Artificial Intelligence & Data Science**\n  CARE College of Engineering | 2022–2026 | CGPA: **7.29 / 10**\n• **Data Analytics Program** — AccioJob (6-month comprehensive program | Ongoing)\n• **Business Analytics Program** — PwC (PricewaterhouseCoopers | 2026 | Ongoing)\n• **Certifications:** Business Analytics with Excel (Simplilearn), Data Science Training (Corizo), Networking Training (Kaashiv InfoTech).`,
+  "roles": `I am actively targeting entry-level and associate roles as a **Data Analyst**, **Business Analyst**, and **BI Analyst**. With a B.Tech in AI & Data Science and ongoing training at AccioJob & PwC, I bring solid skills in SQL, Python, Advanced Excel, Power BI, data cleaning, and KPI reporting alongside practical experience building real-world digital products.`,
+  "fc arena": `**FC Arena** (fcarena.in) is a full-stack football esports tournament platform I engineered and deployed. It handles:\n\n• Round-Robin & Home-and-Away fixture generation\n• Knockout progression, standings & leaderboard rankings\n• Player statistics, match result validation & anti-duplicate logic\n• Admin workflows for organizers (validated with 20+ active players)\n• Stack: Next.js, NestJS, PostgreSQL, Prisma, Redis, JWT.`,
+  "skills": `My core technical skill set:\n\n**Data & BI:** SQL, PostgreSQL, Power BI, Advanced Excel, Power Query, Data Cleaning, KPI Tracking, MIS Reporting\n**Python Analytics:** Python, Pandas, NumPy, Data Processing, Anomaly Detection\n**Full-Stack & Systems:** React, Next.js, NestJS, Django REST, Prisma, Redis, Docker\n**AI-Assisted Dev:** Prompt-driven prototyping, AI debugging, automation workflows.`,
+  "research": `I published an original research paper:\n\n📄 **Smart Daily Report Automation System Using AI**\n• **Journal:** International Journal of Futuristic Multidisciplinary Research (IJFMR)\n• **Volume/Issue:** Vol. 8 Issue 2, Mar–Apr 2026 (Paper ID: 72819)\n• **Impact:** Reduced reporting turnaround by **70%+** and automated 2–3 hours of repetitive daily report generation using Python, Pandas, and NLP.`,
+  "expense tracker": `The **Smart Expense Tracker** is a personal finance system deployed on Vercel & Railway:\n\n• Automatic OCR extraction for receipts (merchant, amount, date, category, tax)\n• Income/expense tracking, bills, budgets, borrow/lend history & savings goals\n• Cash-flow analytics, interactive charts, and CSV data export\n• Stack: React, Django REST Framework, PostgreSQL, JWT, PWA.`,
+  "available": `Yes! I am **currently available for roles and internships** in Data Analytics, Business Intelligence, and Business Analytics across Tamil Nadu and remote positions.`,
+  "contact": `You can reach me directly via:\n\n• **Email:** keerthiprakash.kp33@gmail.com\n• **Phone:** +91 63819 81530\n• **LinkedIn:** linkedin.com/in/keerthiprakasht\n• **GitHub:** github.com/keerthiprakash18\n• Location: Tamil Nadu, India`,
+  "about": `I am **Keerthi Prakash T**, an entry-level Data Analyst graduating with a **B.Tech in Artificial Intelligence & Data Science** from CARE College of Engineering (CGPA 7.29). I specialize in SQL, Python, Advanced Excel, and Power BI, with completed internships at Corizo and Kaashiv InfoTech, and published AI reporting research in IJFMR.`,
 };
 
 function getAnswer(question: string): string {
   const q = question.toLowerCase();
   
+  if (q.includes("education") || q.includes("degree") || q.includes("college") || q.includes("study") || q.includes("cgpa"))
+    return KNOWLEDGE_BASE["education"];
   if (q.includes("role") || q.includes("target") || q.includes("job") || q.includes("position") || q.includes("looking"))
     return KNOWLEDGE_BASE["roles"];
   if (q.includes("fc arena") || q.includes("esport") || q.includes("tournament") || q.includes("football"))
     return KNOWLEDGE_BASE["fc arena"];
-  if (q.includes("skill") || q.includes("technical") || q.includes("sql") || q.includes("python") || q.includes("power bi"))
+  if (q.includes("skill") || q.includes("technical") || q.includes("sql") || q.includes("python") || q.includes("power bi") || q.includes("excel"))
     return KNOWLEDGE_BASE["skills"];
-  if (q.includes("research") || q.includes("publish") || q.includes("paper"))
+  if (q.includes("research") || q.includes("publish") || q.includes("paper") || q.includes("ijfmr"))
     return KNOWLEDGE_BASE["research"];
   if (q.includes("expense") || q.includes("tracker") || q.includes("finance") || q.includes("ocr"))
     return KNOWLEDGE_BASE["expense tracker"];
   if (q.includes("available") || q.includes("hire") || q.includes("open to"))
     return KNOWLEDGE_BASE["available"];
-  if (q.includes("contact") || q.includes("reach") || q.includes("email"))
+  if (q.includes("contact") || q.includes("reach") || q.includes("email") || q.includes("phone"))
     return KNOWLEDGE_BASE["contact"];
   if (q.includes("about") || q.includes("who") || q.includes("keerthi"))
     return KNOWLEDGE_BASE["about"];
   
-  return `I don't have a specific answer for that. I am best equipped to answer questions about:\n\n• My target roles and skills\n• FC Arena — the esports platform\n• Smart Expense Tracker\n• Research publication\n• Availability and contact info\n\nFeel free to rephrase or ask something else!`;
+  return `I don't have a specific answer for that. You can ask me about:\n\n• My B.Tech in AI & Data Science & education\n• My target roles & technical skills (SQL, Python, Excel, Power BI)\n• FC Arena & Smart Expense Tracker projects\n• My research publication in IJFMR\n• Contact details & availability!`;
 }
 
 interface Message {
@@ -50,12 +54,9 @@ interface Message {
 }
 
 function formatMessage(text: string) {
-  // Simple markdown-like formatting
   const lines = text.split("\n");
   return lines.map((line, i) => {
-    // Bold
     const formatted = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-    // Bullets
     if (line.startsWith("•")) {
       return (
         <div key={i} style={{ display: "flex", gap: "0.5rem", marginBottom: "0.25rem" }}>
@@ -75,7 +76,7 @@ export default function AIAssistant() {
     {
       role: "assistant",
       content:
-        "Hi! I'm the portfolio assistant for Keerthi Prakash T. Ask me about his skills, projects, experience, or availability — I'll give you accurate answers based on his actual portfolio.",
+        "Hi! I'm the portfolio assistant for Keerthi Prakash T. Ask me about his B.Tech in AI & Data Science, analytics skills, FC Arena, published research, or availability!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -92,7 +93,7 @@ export default function AIAssistant() {
       const answer = getAnswer(text);
       setMessages((prev) => [...prev, { role: "assistant", content: answer }]);
       setTyping(false);
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -284,7 +285,7 @@ export default function AIAssistant() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") sendMessage(input); }}
-              placeholder="Ask about Keerthi's experience..."
+              placeholder="Ask about Keerthi's background..."
               style={{
                 flex: 1,
                 background: "rgba(255,255,255,0.05)",

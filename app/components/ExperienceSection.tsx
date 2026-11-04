@@ -3,63 +3,80 @@
 const EXPERIENCE = [
   {
     type: "work",
-    title: "Data Analytics Intern",
-    org: "Corizo (Edutech)",
-    period: "2023",
+    title: "Data Science Intern",
+    org: "Corizo EdTech Pvt Ltd",
+    period: "Aug 2025 – Sep 2025",
     location: "Remote",
     description:
-      "Applied Python and Pandas to real-world datasets. Developed analytical workflows, performed exploratory data analysis, and contributed to course content development for data science curricula.",
-    skills: ["Python", "Pandas", "NumPy", "Data Analysis", "EDA"],
+      "Worked on analytics case studies using structured datasets and business-focused problem solving. Created and analyzed Excel-based reports, interpreted patterns, and generated actionable business insights.",
+    skills: ["Python", "Pandas", "Advanced Excel", "Data Analysis", "EDA"],
     icon: "💼",
   },
   {
-    type: "education",
-    title: "MBA — Business Analytics",
-    org: "Rajalakshmi Engineering College",
-    period: "2022 – 2024",
+    type: "work",
+    title: "Networking Intern",
+    org: "Kaashiv InfoTech",
+    period: "Aug 2024 – Sep 2024",
     location: "Chennai, India",
     description:
-      "Specialized in Business Analytics with coursework in statistical analysis, business intelligence, data management, and strategic decision making. Graduated with hands-on project experience across data analytics and product development.",
-    skills: ["Business Analytics", "Statistics", "BI", "Strategy"],
-    icon: "🎓",
+      "Completed practical training in networking fundamentals, network architecture, system troubleshooting, and technical documentation.",
+    skills: ["Networking", "Troubleshooting", "System Admin", "Documentation"],
+    icon: "🌐",
   },
   {
     type: "education",
-    title: "B.Tech — Computer Science Engineering",
-    org: "REC / Affiliated University",
-    period: "2018 – 2022",
-    location: "Chennai, India",
+    title: "B.Tech — Artificial Intelligence & Data Science",
+    org: "CARE College of Engineering",
+    period: "2022 – 2026",
+    location: "Tamil Nadu, India",
     description:
-      "Undergraduate degree in Computer Science with foundational study in algorithms, databases, software engineering, and programming. Built technical foundation for subsequent analytics and development work.",
-    skills: ["C/C++", "Java", "DBMS", "Software Engineering"],
-    icon: "🏛️",
+      "Undergraduate degree focusing on Artificial Intelligence, Machine Learning, Data Science, Relational Databases, and Statistics. Maintained a CGPA of 7.29 / 10 with core focus on data analytics and software engineering.",
+    skills: ["Artificial Intelligence", "Data Science", "SQL", "Python", "CGPA: 7.29"],
+    icon: "🎓",
+  },
+];
+
+const TRAINING_PROGRAMS = [
+  {
+    title: "Data Analytics Program",
+    issuer: "AccioJob",
+    duration: "6-Month Program",
+    status: "Ongoing",
+    icon: "📈",
+  },
+  {
+    title: "PwC Business Analytics Program",
+    issuer: "PricewaterhouseCoopers (PwC)",
+    duration: "2026",
+    status: "Ongoing",
+    icon: "🏢",
   },
 ];
 
 const CERTIFICATIONS = [
   {
-    title: "Python for Data Analysis",
-    issuer: "Corizo / Edutech",
-    year: "2023",
-    icon: "🐍",
-  },
-  {
-    title: "SQL for Data Analytics",
-    issuer: "Self-Directed Learning",
-    year: "2023",
-    icon: "🗄️",
-  },
-  {
-    title: "Power BI Fundamentals",
-    issuer: "Microsoft / Self-Directed",
-    year: "2024",
+    title: "Business Analytics with Excel",
+    issuer: "Simplilearn",
+    year: "Certified",
     icon: "📊",
   },
   {
-    title: "Django REST API Development",
-    issuer: "Project-Based Learning",
-    year: "2024",
-    icon: "⚙️",
+    title: "Data Science Training & Internship",
+    issuer: "Corizo",
+    year: "Certified",
+    icon: "🐍",
+  },
+  {
+    title: "Networking Internship & Training",
+    issuer: "Kaashiv InfoTech",
+    year: "Certified",
+    icon: "🌐",
+  },
+  {
+    title: "Power BI & SQL for Analytics",
+    issuer: "Self-Directed / Hands-on",
+    year: "Proficient",
+    icon: "🗄️",
   },
 ];
 
@@ -172,20 +189,77 @@ export default function ExperienceSection() {
             </div>
           </div>
 
-          {/* Right — Certifications + Research */}
+          {/* Right — Programs, Certifications + Research */}
           <div>
+            {/* Training Programs */}
+            <div style={{ marginBottom: "2rem" }}>
+              <div className="section-label">Professional Training</div>
+              <h3
+                style={{
+                  fontSize: "1.375rem",
+                  fontWeight: 700,
+                  color: "var(--fg-primary)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Executive & Analytics Programs
+              </h3>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "0.75rem",
+                }}
+              >
+                {TRAINING_PROGRAMS.map((prog) => (
+                  <div
+                    key={prog.title}
+                    className="glass-card"
+                    style={{ padding: "1.25rem" }}
+                  >
+                    <span style={{ fontSize: "1.5rem", display: "block", marginBottom: "0.5rem" }}>
+                      {prog.icon}
+                    </span>
+                    <div
+                      style={{
+                        fontSize: "0.875rem",
+                        fontWeight: 600,
+                        color: "var(--fg-primary)",
+                        marginBottom: "0.25rem",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {prog.title}
+                    </div>
+                    <div style={{ fontSize: "0.75rem", color: "var(--fg-muted)" }}>
+                      {prog.issuer}
+                    </div>
+                    <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.5rem", alignItems: "center" }}>
+                      <span className="badge badge-cyan" style={{ fontSize: "0.65rem" }}>
+                        {prog.status}
+                      </span>
+                      <span style={{ fontSize: "0.7rem", color: "var(--fg-muted)" }}>
+                        {prog.duration}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Certifications */}
-            <div style={{ marginBottom: "3rem" }}>
+            <div style={{ marginBottom: "2.5rem" }}>
               <div className="section-label">Credentials</div>
               <h3
                 style={{
                   fontSize: "1.375rem",
                   fontWeight: 700,
                   color: "var(--fg-primary)",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1.25rem",
                 }}
               >
-                Certifications & Training
+                Certifications
               </h3>
 
               <div
@@ -218,7 +292,7 @@ export default function ExperienceSection() {
                     <div style={{ fontSize: "0.75rem", color: "var(--fg-muted)" }}>
                       {cert.issuer}
                     </div>
-                    <div style={{ fontSize: "0.7rem", color: "var(--accent-blue)", marginTop: "0.25rem" }}>
+                    <div style={{ fontSize: "0.7rem", color: "var(--accent-blue-bright)", marginTop: "0.25rem" }}>
                       {cert.year}
                     </div>
                   </div>
@@ -228,16 +302,16 @@ export default function ExperienceSection() {
 
             {/* Research Publication */}
             <div>
-              <div className="section-label">Research</div>
+              <div className="section-label">Research Publication</div>
               <h3
                 style={{
                   fontSize: "1.375rem",
                   fontWeight: 700,
                   color: "var(--fg-primary)",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1.25rem",
                 }}
               >
-                Publication
+                Published Paper
               </h3>
 
               <div
@@ -263,26 +337,26 @@ export default function ExperienceSection() {
                         fontSize: "1rem",
                         fontWeight: 700,
                         color: "var(--fg-primary)",
-                        marginBottom: "0.5rem",
+                        marginBottom: "0.35rem",
                         lineHeight: 1.4,
                       }}
                     >
-                      Automation of Daily Report Generation Using AI and NLP
+                      Smart Daily Report Automation System Using AI
                     </h4>
                     <p
                       style={{
-                        fontSize: "0.8rem",
-                        color: "var(--fg-muted)",
+                        fontSize: "0.75rem",
+                        color: "var(--accent-cyan)",
                         marginBottom: "0.5rem",
+                        fontFamily: "var(--font-mono)",
                       }}
                     >
-                      Research study on automated analytics pipeline using Python, Pandas, and NLP for business intelligence reporting
+                      IJFMR, Vol. 8 Issue 2, Mar-Apr 2026 · Paper ID: 72819
                     </p>
-                    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>Research</span>
-                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>NLP</span>
-                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>Python</span>
-                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>Automation</span>
+                    <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>IJFMR Published</span>
+                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>NLP & AI</span>
+                      <span className="badge badge-purple" style={{ fontSize: "0.7rem" }}>70%+ Turnaround Cut</span>
                     </div>
                   </div>
                 </div>
@@ -294,10 +368,9 @@ export default function ExperienceSection() {
                     lineHeight: 1.75,
                   }}
                 >
-                  Investigated the application of NLP and automation to reduce manual
-                  report generation effort. Demonstrated how Python-based pipelines
-                  can process structured business data, compute KPIs, and generate
-                  analyst-quality insight commentary automatically.
+                  Published research investigating automated data pipelines with Python, Pandas,
+                  KPI tracking, anomaly detection, and NLP-driven executive summaries. Successfully
+                  reduced reporting turnaround by 70%+ and automated 2–3 hours of repetitive daily work.
                 </p>
               </div>
             </div>

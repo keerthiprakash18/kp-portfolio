@@ -17,31 +17,21 @@ export default function AboutSection() {
           <div>
             <div className="section-label">Who I Am</div>
             <h2 className="section-title">
-              Analyst by training,
+              Data Analyst &amp; AI-Assisted
               <br />
-              <span className="gradient-text">builder by nature</span>
+              <span className="gradient-text">Product Developer</span>
             </h2>
 
             <p style={{ marginBottom: "1.25rem" }}>
-              I am an MBA graduate specializing in Business Analytics, with
-              genuine hands-on experience in data analysis, business
-              intelligence, and product development. I combine the analytical
-              discipline of a data professional with the product mindset of a
-              developer who ships real things.
+              I hold a <strong>B.Tech in Artificial Intelligence &amp; Data Science</strong> from CARE College of Engineering (2022–2026), combining strong statistical foundation and machine learning principles with practical business analytics.
             </p>
 
             <p style={{ marginBottom: "1.25rem" }}>
-              My work ranges from building SQL-driven analytics workflows and
-              Power BI dashboards to launching a live esports tournament platform
-              (FC Arena) used by real players and running a full-stack personal
-              finance application with OCR, authentication, and mobile builds.
+              My technical expertise spans <strong>SQL, PostgreSQL, Python (Pandas, NumPy), Advanced Excel, Power Query, and Power BI</strong> for end-to-end data pipelines, MIS reporting, and KPI dashboards. I am also advancing through the <strong>AccioJob Data Analytics Program</strong> and the <strong>PwC Business Analytics Program</strong>.
             </p>
 
             <p style={{ marginBottom: "2rem" }}>
-              I leverage AI tools strategically to accelerate development —
-              not as a shortcut, but as a force multiplier for delivering
-              quality products faster. My published research adds academic depth
-              to practical experience.
+              Beyond analytics, I build and deploy production digital products like <strong>FC Arena</strong> (live tournament platform) and <strong>Smart Expense Tracker</strong> (personal finance with receipt OCR). My published research in IJFMR validates an automated daily reporting pipeline that reduced reporting turnaround by <strong>70%+</strong>.
             </p>
 
             {/* Key attributes */}
@@ -53,10 +43,10 @@ export default function AboutSection() {
               }}
             >
               {[
-                { icon: "📊", title: "Data First", desc: "SQL, Python, Power BI for analytics" },
-                { icon: "🏗️", title: "Product Builder", desc: "Ships real products end-to-end" },
-                { icon: "🤖", title: "AI-Augmented", desc: "Strategic use of AI dev tools" },
-                { icon: "🎓", title: "MBA Analytics", desc: "Business-focused analytical lens" },
+                { icon: "📊", title: "Data & BI", desc: "SQL, Power BI, Advanced Excel, MIS" },
+                { icon: "🎓", title: "B.Tech AI & DS", desc: "CARE College of Engg (CGPA 7.29)" },
+                { icon: "🏆", title: "Product Builder", desc: "FC Arena & Smart Expense Tracker" },
+                { icon: "📄", title: "Published Author", desc: "IJFMR Vol 8 Issue 2 (AI Reporting)" },
               ].map((item) => (
                 <div
                   key={item.title}
@@ -98,9 +88,12 @@ export default function AboutSection() {
 
               {[
                 { label: "Name", value: "Keerthi Prakash T" },
-                { label: "Degree", value: "MBA — Business Analytics" },
-                { label: "Location", value: "India" },
-                { label: "Target Roles", value: "Data Analyst · BI Analyst · Business Analyst" },
+                { label: "Degree", value: "B.Tech — AI & Data Science (2022–2026)" },
+                { label: "College", value: "CARE College of Engineering" },
+                { label: "CGPA", value: "7.29 / 10" },
+                { label: "Location", value: "Tamil Nadu, India" },
+                { label: "Target Roles", value: "Data Analyst · Business Analyst · BI Analyst" },
+                { label: "Training", value: "AccioJob & PwC Business Analytics" },
                 { label: "Availability", value: "Open to opportunities" },
               ].map((item) => (
                 <div
@@ -108,7 +101,7 @@ export default function AboutSection() {
                   style={{
                     display: "flex",
                     gap: "1rem",
-                    padding: "0.75rem 0",
+                    padding: "0.65rem 0",
                     borderBottom: "1px solid var(--border-subtle)",
                     alignItems: "flex-start",
                   }}
@@ -125,7 +118,7 @@ export default function AboutSection() {
                   </span>
                   <span
                     style={{
-                      fontSize: "0.9rem",
+                      fontSize: "0.875rem",
                       color: "var(--fg-primary)",
                       fontWeight: 500,
                     }}
@@ -152,9 +145,10 @@ export default function AboutSection() {
               </h3>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                 {[
-                  "SQL", "Python", "Power BI", "Excel", "Data Analytics",
-                  "Business Intelligence", "Data Visualization", "Statistical Analysis",
-                  "Django REST", "React", "PostgreSQL", "Pandas", "NumPy",
+                  "SQL", "PostgreSQL", "Python", "Pandas", "NumPy",
+                  "Power BI", "Advanced Excel", "Power Query", "Data Cleaning",
+                  "KPI Tracking", "MIS Reporting", "React", "Next.js",
+                  "NestJS", "Django REST", "Docker",
                 ].map((skill) => (
                   <span key={skill} className="skill-pill">
                     {skill}

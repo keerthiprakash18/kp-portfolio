@@ -84,7 +84,7 @@ export default function HeroSection() {
               {[
                 "Data Analyst",
                 "Business Analytics",
-                "AI-Assisted Product Developer",
+                "AI-Assisted Developer",
               ].map((role, i) => (
                 <span key={role} className="badge badge-blue" style={{ fontSize: "0.8125rem" }}>
                   {i > 0 && <span style={{ color: "var(--fg-muted)", marginRight: "0.25rem" }}>·</span>}
@@ -115,14 +115,11 @@ export default function HeroSection() {
                 fontSize: "1rem",
                 color: "var(--fg-secondary)",
                 lineHeight: 1.75,
-                maxWidth: "520px",
+                maxWidth: "540px",
                 marginBottom: "2.5rem",
               }}
             >
-              MBA graduate in Business Analytics with hands-on expertise in SQL,
-              Python, Power BI, and data-driven decision making. I build real
-              products — from an esports tournament platform to a full-stack
-              expense tracker — combining analytical rigour with product thinking.
+              B.Tech in Artificial Intelligence &amp; Data Science (CARE College of Engineering, 2022–2026, CGPA 7.29) with hands-on expertise in SQL, Python, Power BI, Advanced Excel, and business analytics. Builder of live platforms like <strong>FC Arena</strong> and <strong>Smart Expense Tracker</strong>, with published research in automated AI reporting.
             </p>
 
             {/* Achievement chips */}
@@ -135,10 +132,10 @@ export default function HeroSection() {
               }}
             >
               {[
-                { icon: "📊", label: "SQL & Python Analytics" },
-                { icon: "🏆", label: "FC Arena — Live Tournament Platform" },
-                { icon: "📱", label: "Full-Stack + Mobile Apps" },
-                { icon: "🔬", label: "Research Published" },
+                { icon: "📊", label: "SQL, Python & Power BI" },
+                { icon: "🏆", label: "FC Arena — Live Platform" },
+                { icon: "📄", label: "Published Author (IJFMR)" },
+                { icon: "📈", label: "AccioJob & PwC Analytics" },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -181,14 +178,14 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="btn btn-secondary btn-lg"
               >
-                ↓ Resume
+                ↓ Download Resume
               </a>
             </div>
 
             {/* Social links */}
             <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
               <a
-                href="https://github.com/keerthiprakash"
+                href="https://github.com/keerthiprakash18"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
@@ -278,7 +275,6 @@ export default function HeroSection() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "5rem",
                   boxShadow:
                     "0 20px 60px rgba(0,0,0,0.6), 0 0 60px rgba(59,130,246,0.2)",
                   overflow: "hidden",
@@ -286,7 +282,6 @@ export default function HeroSection() {
                   zIndex: 1,
                 }}
               >
-                {/* Initials fallback — replace with <Image> when you add your photo */}
                 <span
                   style={{
                     fontWeight: 800,
@@ -313,10 +308,10 @@ export default function HeroSection() {
               }}
             >
               {[
-                { value: "3+", label: "Real Products Built" },
-                { value: "MBA", label: "Business Analytics" },
-                { value: "SQL", label: "Advanced Proficiency" },
-                { value: "2026", label: "Available Now" },
+                { value: "7.29", label: "CGPA (B.Tech AI & DS)" },
+                { value: "2026", label: "CARE College of Engg" },
+                { value: "70%+", label: "Reporting Time Reduced" },
+                { value: "1 Paper", label: "IJFMR Published" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -369,12 +364,7 @@ export default function HeroSection() {
           animation: "float 2s ease-in-out infinite",
         }}
         aria-hidden="true"
-      >
-        <span>scroll</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
+      />
 
       <style>{`
         @keyframes spin {
